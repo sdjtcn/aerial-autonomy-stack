@@ -1,11 +1,7 @@
 name: ground-image amd64
 
 on:
-  schedule:
-    - cron: '0 3 * * 6'
-  workflow_dispatch: {}
-  pull_request:
-    branches: [ "main" ]
+  workflow_call: {}
 
 jobs:
   build:
@@ -63,5 +59,21 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build the ground image (optionally, add --push)
-        run: docker buildx build -t ghcr.io/jacopopan/ground-image:latest -f ./scripts/docker/Dockerfile.ground .
+      - name: Determine Docker tag
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_NUMBER: ${{ github.event.number }}
+          REF_NAME: ${{ github.ref_name }}
+          REF: ${{ github.ref }}
+        run: |
+          if [ "$EVENT_NAME" == "pull_request" ]; then
+            echo "DOCKER_TAG=pr-${EVENT_NUMBER}" >> $GITHUB_ENV
+          elif [ "$REF" == "refs/heads/main" ]; then
+            echo "DOCKER_TAG=latest" >> $GITHUB_ENV
+          else
+            BRANCH_TAG=$(echo "$REF_NAME" | tr '/' '-')
+            echo "DOCKER_TAG=${BRANCH_TAG}" >> $GITHUB_ENV
+          fi
+
+      - name: Build the ground image
+        run: docker buildx build --push -t ghcr.io/jacopopan/ground-image:${{ env.DOCKER_TAG }} -f ./scripts/docker/Dockerfile.ground .
