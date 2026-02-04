@@ -51,36 +51,63 @@ For even more resources, check out [`aerial_robotic_landscape`](https://github.c
 
 ## Roadmap
 
-### LiDAR-inertial Odometry and SLAM
+### Feature: LiDAR-inertial Odometry and SLAM
 
-> TBD
+> Advanced localization and mapping baselines and capabilities
 
 - [ ] Add [SuperOdom](https://github.com/superxslam/SuperOdom) baseline
 - [ ] Add [SPARK-FAST-LIO](https://github.com/MIT-SPARK/spark-fast-lio) baseline
-- [ ] Create a suitable, obstacle-rich 3D world.sdf for LIO-based navigation and mapping
+- [ ] Create an indoor (maze-like) 3D world.sdf for LIO-based navigation and mapping
+- [ ] Create an outdoor 3D world.sdf for LIO-based navigation and mapping
 - [ ] Refine the sensor model and placement of `sensor_lidar`
 - [ ] Compare localization performance for a pre-defined navigation task at varying speeds
 - [ ] Develop proposed approach
 - [ ] Fuse offboard state estimation into PX4/ArduPilot onboard state estimation
 - [ ] Add GPSless SITL simulation option
 
+### Feature: Gymnasium RL Environment and Examples
+
+> SITL and perception-enabled reinforcement learning for real-world deployment
+
+- [ ] Optimize the environment `.reset()` time
+- [ ] Conditional/AP mode startup to replace `GYM_INIT_DURATION`
+- [ ] `offboard_control` references from external topics bridged by ZeroMQ
+- [ ] ...
+
 <!-- 
 
-### Betaflight SITL
+### Feature: Betaflight SITL
 
-TBD
+> Implement a C++ gz-transport/UDP bridge between Gazebo Sim and Betaflight SITL
+
+- https://www.betaflight.com/docs/development/SITL
+- https://github.com/Aeroloop/betaloop
+- https://github.com/utiasDSL/gym-pybullet-drones/blob/a8c238c21c7586ee1735bafb358a4d5637402f14/gym_pybullet_drones/envs/BetaAviary.py#L111C1-L172C56
+
+### More Out-there Ideas
+
+> Potential for technical spikes/long-term, nice-to-have features
+
+- Use ArduPilot ROS2 DDS interface instead of or alongside MAVROS
+    - https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2#readme
+    - https://ardupilot.org/dev/docs/ros2-sitl.html
+- Integrate a photorealistic simulator (e.g., IsaacSim)
+    - https://github.com/PegasusSimulator/PegasusSimulator
+- Integrate more realistic flight dynamics (e.g., JSBSim)
+    - https://github.com/JSBSim-Team/jsbsim
+- Integrate a VLA model bridging the `yolo_py` and `mission` packages
 
 -->
 
-### Dependency Management
+### Maintenance: Dependency Management
 
-> PRs to update these dependencies to their latest stable release are always welcome
+> PRs to update dependencies to their latest stable release are always welcome
 
 - [x] Host OS: [Ubuntu 22.04/24.04 (LTS, ESM 4/2034)](https://ubuntu.com/about/release-cycle)
 - [x] Jetson OS: [L4T 36 (Ubuntu 22-based)/JetPack 6 (latest major release for Orin as of 2/2026)](https://developer.nvidia.com/embedded/jetpack-archive)
-- [ ] `nvidia-driver-580` https://developer.nvidia.com/datacenter-driver-archive -> **UPDATE TO 590**
-- [x] [Docker Engine v28 or newer](https://docs.docker.com/engine/release-notes/)
-- [x] [NVIDIA Container Toolkit 1.18 or newer](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
+- [ ] `nvidia-driver-580` https://developer.nvidia.com/datacenter-driver-archive -> **TEST ON 590**
+- [x] [Docker Engine v29](https://docs.docker.com/engine/release-notes/)
+- [x] [NVIDIA Container Toolkit 1.18](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
 - [ ] `amd64` base image: [`cuda:12.8.1-cudnn-runtime-ubuntu22.04`](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda/tags) -> **UPDATE TO `cuda:13.1.1-cudnn-runtime-ubuntu22.04`**
 - [x] `arm64`/Jetson base image: [`l4t-jetpack:r36.4.0`](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags)
 - [x] [ROS2 Humble (LTS, EOL 5/2027)](https://docs.ros.org/en/rolling/Releases.html)
