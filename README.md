@@ -6,7 +6,8 @@
 2. **Simulate** faster-than-real-time perception and control—with YOLOv8 and 3D LiDAR 
 3. **Deploy** in real drones—with JetPack and NVIDIA Orin
 
-Also read [`RATIONALE.md`](/supplementary/RATIONALE.md) or [ask Perplexity <img width="16" alt="logo" src="https://github.com/user-attachments/assets/458351d3-ccc7-4fa4-b49a-86a3492170e5" /> about AAS](https://www.perplexity.ai/search?q=I%20am%20looking%20at%20the%20repo%20https%3A%2F%2Fgithub.com%2FJacopoPan%2Faerial-autonomy-stack.%20Summarize%20what%20this%20code%20does%20and%20how%20it%20can%20help%20me%20and%20my%20projects.); if you wish, please cite this work as:
+Also read [`RATIONALE.md`](/supplementary/RATIONALE.md) or [ask Perplexity <img width="16" alt="logo" src="https://github.com/user-attachments/assets/458351d3-ccc7-4fa4-b49a-86a3492170e5" /> about AAS](https://www.perplexity.ai/search?q=I%20am%20looking%20at%20the%20repo%20https%3A%2F%2Fgithub.com%2FJacopoPan%2Faerial-autonomy-stack.%20Summarize%20what%20this%20code%20does,%20give%20me%20an%20assessment%20of%20the%20code%20quality%20and%20potential,%20and%20tell%20me%20how%20it%20can%20help%20me%20and%20my%20projects.); if you wish, please cite this work as:
+
 ```bibtex
 @misc{panerati2026aas,
       title={{\ttfamily aerial-autonomy-stack}---a faster-than-real-time, autopilot-agnostic, {ROS2} framework to simulate and deploy perception-based drones}, 
@@ -200,8 +201,8 @@ cd aerial-autonomy-stack/scripts/
 ```
 
 <div align="right">
-  <a href="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-amd64-main.yml">
-    <img src="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-amd64-main.yml/badge.svg" alt="aas-main amd64">
+  <a href="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-amd64-build-and-test.yml">
+    <img src="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-amd64-build-and-test.yml/badge.svg" alt="aas build-and-test amd64">
   </a>
 </div>
 
@@ -366,7 +367,7 @@ pip3 install -e .
 
 <div align="right">
   <a href="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-gym-pip-install.yml">
-    <img src="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-gym-pip-install.yml/badge.svg" alt="aircraft-image arm64">
+    <img src="https://github.com/JacopoPan/aerial-autonomy-stack/actions/workflows/aas-gym-pip-install.yml/badge.svg" alt="aas-gym pip install">
   </a>
 </div>
 
@@ -395,7 +396,7 @@ docker stop $(docker ps -q) && docker container prune -f && docker network prune
 
 ## Jetson Deployment
 
-> AAS is tested on a [Holybro Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) with Pixhawk 6X and NVIDIA Orin NX 16GB on a [X650](https://holybro.com/collections/multicopter-kit/products/x650-development-kit)
+> AAS is tested on a [Holybro Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) with Pixhawk 6X and NVIDIA Orin NX 16GB on an [X650](https://holybro.com/collections/multicopter-kit/products/x650-development-kit)
 > 
 > Read [`SETUP_AVIONICS.md`](/supplementary/SETUP_AVIONICS.md) to setup the requirements on the Jetson and configure the Pixhawk
 

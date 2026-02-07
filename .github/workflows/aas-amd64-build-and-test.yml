@@ -1,4 +1,4 @@
-name: aas ci/cd amd64
+name: aas build-and-test amd64
 
 on:
   schedule:
@@ -60,7 +60,7 @@ jobs:
         run: |
           free -h
           sudo swapon --show
-          
+
       - name: Check disk space
         run: df -h
 
