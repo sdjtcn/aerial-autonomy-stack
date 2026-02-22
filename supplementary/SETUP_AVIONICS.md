@@ -3,6 +3,8 @@
 > These instructions are tested on a [Holybro Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) with Pixhawk 6X and NVIDIA Orin NX 16GB on an [X650](https://holybro.com/collections/multicopter-kit/products/x650-development-kit)
 >
 > Alternative hardware options include: [ARK Jetson PAB Orin NX NDAA](https://arkelectron.com/product/ark-jetson-orin-nx-ndaa-bundle/) and the [Holybro 6X Pro](https://holybro.com/collections/flight-controllers/products/pixhawk-6x-pro) paired with [Seeed Studio's A603/A608](https://www.seeedstudio.com/Jetson-A608-Carrier-Board-for-Orin-NX-Orin-Nano-Series-p-5853.html)
+>
+> For a complete quadcopter bill of materials, read [`BOM.md`](/supplementary/BOM.md)
 
 ## Flash JetPack 6 to Jetson Orin
 
