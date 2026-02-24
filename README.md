@@ -8,7 +8,7 @@
 2. **Simulate** faster-than-real-time perception and control—with YOLO and 3D LiDAR
 3. **Deploy** in real drones—with JetPack and NVIDIA Orin
 
-For a minimalist bill of materials, read [`BOM.md`](/supplementary/BOM.md); if you wish, please cite this work as:
+For an example bill of materials, read [`BOM.md`](/supplementary/BOM.md); for motivation, read [`RATIONALE.md`](/supplementary/RATIONALE.md); if you wish, cite this work as:
 
 ```bibtex
 @misc{panerati2026aas,
@@ -424,7 +424,7 @@ cd aerial-autonomy-stack/scripts/
 </div>
 
 >[!TIP]
-> AAS is tested on a [Holybro Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) with Pixhawk 6X and NVIDIA Orin NX 16GB on an [X650](https://holybro.com/collections/multicopter-kit/products/x650-development-kit)
+> AAS is tested on a [Holybro Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) with Pixhawk 6X and NVIDIA Orin NX 16GB on an [X650](/supplementary/BOM.md)
 >
 > Read [`SETUP_AVIONICS.md`](/supplementary/SETUP_AVIONICS.md) to setup the requirements on the Jetson and configure the Pixhawk
 
