@@ -84,7 +84,7 @@ sudo systemctl restart docker
 
 docker info | grep -i runtime       # Check the `nvidia` runtime is available
 
-docker run --rm --gpus all nvcr.io/nvidia/cuda:12.2.0-base-ubuntu22.04 nvidia-smi        # Test nvidia-smi works in a container with CUDA
+docker run --rm --gpus all nvcr.io/nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04 nvidia-smi # Test nvidia-smi works in a container with CUDA
 ```
 
 ## Optimize Memory Usage
