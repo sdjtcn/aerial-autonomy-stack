@@ -34,6 +34,9 @@ windows:
           echo "[UartEndpoint hardware]" >> /aas/ground_resources/comms/mavlink_router_main.conf &&
           echo "Device = /dev/ttyUSB0" >> /aas/ground_resources/comms/mavlink_router_main.conf &&
           echo "Baud = 57600" >> /aas/ground_resources/comms/mavlink_router_main.conf &&
+          <%
+            # Optionally, support muliple point-to-point radios
+          %>
           <% end %>
           mavlink-routerd -c /aas/ground_resources/comms/mavlink_router_main.conf
 
