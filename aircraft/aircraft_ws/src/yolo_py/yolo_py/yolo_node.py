@@ -78,7 +78,7 @@ class YoloInferenceNode(Node):
     def run_inference_loop(self):
         # Acquire video stream
         if self.architecture == 'x86_64':
-            # # GPU pipeline: NOT WORKING TODO: switch to base image with DeepStream
+            # # GPU pipeline: TODO NOT WORKING
             # gst_pipeline_string = (
             #     "udpsrc port=5600 ! "
             #     "application/x-rtp, media=(string)video, encoding-name=(string)H264 ! "
@@ -106,14 +106,15 @@ class YoloInferenceNode(Node):
                 gst_pipeline_string = (
                 "udpsrc port=5600 ! "
                     "application/x-rtp, media=(string)video, encoding-name=(string)H264 ! "
+                    "rtpjitterbuffer latency=50 drop-on-latency=true ! "
                     "rtph264depay ! "
                     "h264parse ! "
-                    "nvv4l2decoder ! "     # Hardware Decoding: Uses the Orin's dedicated engine
+                    "nvv4l2decoder enable-max-performance=1 ! "     # Hardware Decoding: Uses the Orin's dedicated engine
                     "nvvidconv ! "         # NVMM-to-CPU Memory Conversion
                     "video/x-raw, format=I420 ! "
                     "videoconvert ! "      # CPU Color Conversion: I420 to BGR
                     "video/x-raw, format=BGR ! "
-                    "appsink drop=true max-buffers=1 "
+                    "appsink drop=true max-buffers=1 sync=false "
                 )
                 # # CPU pipeline:
                 # gst_pipeline_string = (
