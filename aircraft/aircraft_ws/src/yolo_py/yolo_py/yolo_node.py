@@ -104,11 +104,11 @@ class YoloInferenceNode(Node):
             if self.hitl: # For HITL, acquire UDP stream from gz-sim
                 # GPU pipeline:
                 gst_pipeline_string = (
-                "udpsrc port=5600 ! "
+                "udpsrc port=5600 buffer-size=5242880 ! "
                     "application/x-rtp, media=(string)video, encoding-name=(string)H264 ! "
-                    "rtpjitterbuffer latency=50 drop-on-latency=true ! "
+                    "rtpjitterbuffer latency=200 drop-on-latency=true ! "
                     "rtph264depay ! "
-                    "h264parse ! "
+                    "h264parse config-interval=-1 ! "
                     "nvv4l2decoder enable-max-performance=1 ! "     # Hardware Decoding: Uses the Orin's dedicated engine
                     "nvvidconv ! "         # NVMM-to-CPU Memory Conversion
                     "video/x-raw, format=I420 ! "
