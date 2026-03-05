@@ -188,7 +188,7 @@ aerial-autonomy-stack
 ## 1. Installation
 
 ```sh
-sudo apt update && sudo apt install -y git git-lfs xterm xfonts-base && git lfs install
+sudo apt update && sudo apt install -y git xterm xfonts-base wget unzip
 
 git clone https://github.com/JacopoPan/aerial-autonomy-stack.git
 cd aerial-autonomy-stack/scripts/
@@ -409,7 +409,7 @@ docker stop $(docker ps -q) && docker container prune -f && docker network prune
 ## 4. Jetson Deployment
 
 ```sh
-sudo apt update && sudo apt install -y git git-lfs
+sudo apt update && sudo apt install -y git
 
 git clone https://github.com/JacopoPan/aerial-autonomy-stack.git
 cd aerial-autonomy-stack/scripts/
