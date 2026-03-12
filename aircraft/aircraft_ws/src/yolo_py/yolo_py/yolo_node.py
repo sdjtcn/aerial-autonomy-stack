@@ -190,12 +190,13 @@ class YoloInferenceNode(Node):
                     gst_out = (
                         "appsrc do-timestamp=true ! video/x-raw, format=BGR ! queue max-size-buffers=2 leaky=downstream ! "
                         "videoconvert ! videorate drop-only=true ! "
-                        "video/x-raw, format=BGRx, max-framerate=15/1 ! nvvidconv ! "
+                        "video/x-raw, format=BGRx, max-framerate=10/1 ! nvvidconv ! "
                         "nvv4l2h265enc maxperf-enable=1 preset-level=1 insert-sps-pps=true idrinterval=30 ! "
                         f"h265parse ! rtph265pay pt=96 config-interval=1 mtu=1400 ! udpsink host={gnd_ip} port={port} sync=false async=false"
                     )
-                    # Cap the framerate to 15FPS and use h265 to reduce bandwidith
-                    # Optionally, add "control-rate=2 bitrate=2000000 peak-bitrate=3000000" in nvv4l2h265enc's line to cap (variable) bitrate
+                    # Cap the framerate to 10FPS and use h265 to reduce bandwidith
+                    # Optionally, add "control-rate=2 bitrate=2000000 peak-bitrate=3000000" after nvv4l2h265enc to cap (variable) bitrate
+                    # Optionally, re-scale the frames "nvvidconv ! video/x-raw, width=640, height=480 ! "
                     self.gnd_stream_writer = cv2.VideoWriter(gst_out, cv2.CAP_GSTREAMER, 0, 60.0, (w, h)) # Framerate upper limit of 60FPS
                     self.get_logger().info(f"Started UDP stream to {gnd_ip}:{port}")
                 if self.gnd_stream_writer.isOpened():
