@@ -301,7 +301,7 @@ WIP
 GPSx_TYPE           1               # Auto, GPS1 or GPS2 depending on the JST connector used on the Jetson Baseboard
 # ESCs
 SERVOx_FUNCTION     0               # Disabled, for SERVO1 to 4, these are channels 1 to 4 on IO PWM
-MOT_PWM_TYPE	      6               # DShot600, for the Tekko32 F4 45A ESCs, using the first 4 channels on FMU PWM, i.e. SERVO9 to 12
+MOT_PWM_TYPE	    6               # DShot600, for the Tekko32 F4 45A ESCs, using the first 4 channels on FMU PWM, i.e. SERVO9 to 12
 SERVO9_FUNCTION     33              # Motor 1, channel 1 on FMU PWM
 SERVO10_FUNCTION    34              # Motor 2, channel 2 on FMU PWM
 SERVO11_FUNCTION    35              # Motor 3, channel 3 on FMU PWM
